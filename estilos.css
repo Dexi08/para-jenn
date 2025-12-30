@@ -1,0 +1,146 @@
+/* RESET */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* BODY */
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Dancing Script', cursive;
+    overflow: hidden;
+}
+
+/* CONTENEDOR */
+.card {
+    width: 90%;
+    max-width: 350px;
+    height: 450px;
+    perspective: 1200px;
+    cursor: pointer;
+}
+
+/* TARJETA INTERNA */
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 1s ease;
+    transform-style: preserve-3d;
+}
+
+/* ANIMACIÓN */
+.card.open .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* LADOS */
+.card-front,
+.card-back {
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+
+/* PARTE FRONTAL */
+.card-front {
+    background: #ffffff;
+    border: 3px solid #ff6f61;
+    box-shadow:
+        0 0 0 4px #fff,
+        0 0 15px rgba(255, 111, 97, 0.6);
+    position: relative;
+    text-align: center;
+}
+
+/* TEXTO FRONTAL */
+.card-front h2 {
+    font-size: 2.4rem;
+    color: #ff6f61;
+    margin-bottom: 10px;
+}
+
+.card-front p {
+    font-size: 1.3rem;
+    color: #666;
+}
+
+/* PARTE INTERNA */
+.card-back {
+    background-image: url("fondo.jpg"); /* TU FONDO */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: rotateY(180deg);
+}
+
+/* CAJA BLANCA SOLO PARA EL INTERIOR */
+.text-box {
+    background: rgba(255, 255, 255, 0.88);
+    padding: 20px 24px;
+    border-radius: 18px;
+    text-align: center;
+    max-width: 85%;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* TEXTO INTERIOR */
+.card-back h1 {
+    font-size: 2.5rem;
+    color: #ff4081;
+    margin-bottom: 10px;
+}
+
+.card-back p {
+    font-size: 1.4rem;
+    color: #444;
+    line-height: 1.4;
+}
+
+/* ===== LAZO DECORATIVO ===== */
+.card-front::before,
+.card-front::after {
+    content: "";
+    position: absolute;
+    top: -22px;
+    width: 70px;
+    height: 35px;
+    background: #ff6f61;
+    border-radius: 0 0 50px 50px;
+}
+
+/* Lazo izquierdo */
+.card-front::before {
+    left: 50%;
+    transform: translateX(-65px) rotate(-20deg);
+}
+
+/* Lazo derecho */
+.card-front::after {
+    left: 50%;
+    transform: translateX(5px) rotate(20deg);
+}
+
+/* Centro del lazo */
+.lazo-centro {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 22px;
+    height: 22px;
+    background: #ff4081;
+    border-radius: 50%;
+    z-index: 2;
+}
